@@ -18,11 +18,11 @@ import google.generativeai as genai
 app = FastAPI()
 
 # ข้อมูล token และ channel secret สำหรับ LINE
-ACCESS_TOKEN = "example"
-CHANNEL_SECRET = "example"
+ACCESS_TOKEN = "XsRT9+aJcOoWbXwM4x8LWMbBiH4lKlUxa5ix4Ppxrg+6hxESwGh7M4/w1XgDBW/7xRdJOlqQVPnhW6VMOOXiau78ThyLp0Oefl4npYkUa92U/1+D/VCD5O8oozSku/LwaPpXe2/JNmZ4r2L+st/hIQdB04t89/1O/w1cDnyilFU="
+CHANNEL_SECRET = "1f2e09b40ce5f71c52a42a1efbab087b"
 
 # ข้อมูล Gemini api key
-GEMINI_API_KEY = "example"
+GEMINI_API_KEY = "AIzaSyDYlM-EhWSPrqBj_aYJafyQchZilCAbMsE"
 
 # การเชื่อมต่อ และตั้งค่าข้อมูลเพื่อเรียกใช้งาน LINE Messaging API
 configuration = Configuration(access_token=ACCESS_TOKEN)
