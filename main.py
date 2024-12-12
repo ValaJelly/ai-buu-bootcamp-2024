@@ -27,11 +27,11 @@ from contextlib import asynccontextmanager
 app = FastAPI()
 
 # ข้อมูล token และ channel secret สำหรับ LINE
-ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN", "")
-CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", "")
+ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN", "XsRT9+aJcOoWbXwM4x8LWMbBiH4lKlUxa5ix4Ppxrg+6hxESwGh7M4/w1XgDBW/7xRdJOlqQVPnhW6VMOOXiau78ThyLp0Oefl4npYkUa92U/1+D/VCD5O8oozSku/LwaPpXe2/JNmZ4r2L+st/hIQdB04t89/1O/w1cDnyilFU=")
+CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", "1f2e09b40ce5f71c52a42a1efbab087b")
 
 # ข้อมูล Gemini api key
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyDYlM-EhWSPrqBj_aYJafyQchZilCAbMsE")
 
 # การเชื่อมต่อ และตั้งค่าข้อมูลเพื่อเรียกใช้งาน LINE Messaging API
 configuration = Configuration(access_token=ACCESS_TOKEN)
@@ -240,10 +240,12 @@ gemini = GeminiRAGSystem(
 async def lifespan(app: FastAPI):
     # ข้อมูลตัวอย่างที่ใช้สำหรับ Gemini
     sample_documents = [
-        "จิรภัทร ทำดี คือ ชายหนุ่มที่มีความสามารถในการเขียนโปรแกรมที่มาจากบริษัท ClickNext ที่เป็นบริษัทด้านการพัฒนาโปรแกรมที่มีชื่อเสียง",
-        "จิรภัทร ทำดี มีชื่อเล่นว่า ปาล์ม เกิดวันที่ 25 มกราคม 2555 ที่จังหวัดสระบุรี ศึกษาจบจากมหาวิทยาลัยบูรพา สาขาวิศวกรรมคอมพิวเตอร์",
+        "ณัฐวุฒิ บุญมีประเสริฐ คือ หนุ่มน้อยอารมณ์ดี น่ารัก สดใส เฮฮา สนุก เพลิดเพลิน คิดบวก Positive Thinking ใจดี หวาน แบ๊ว พูดคุยง่าย Extrovert",
+        "ณัฐวุฒิ บุญมีประเสริฐ มีชื่อเล่นว่า ฟองนม เกิดวันที่ 4 มิถุนายน 2546 ที่จังหวัดพระนครศรีอยุธยา แต่ใช้ชีวิตที่สุพรรณบุรีเพราะติดแกรม",
+        "ฟองนม กำลังศึกษาอยู่ที่มหาวิทยาลัยบูรพา คณะวิทยาการสารสนเทศ สาขาเทคโนโลยีสารสนเทศเพื่ออุตสาหกรรมดิจิทัล ชั้นปีที่ 3 ถนัดในด้านของการปั้นโมเดล 3D และ การทำ Animation, การทำ AR VR,ออกแบบ UX/UI, ทำเกมทั้งในรูปแบบของ 2D 2.5D และ 3D, ",
         "งาน BUU-Bootcamp-2024 จัดที่มหาวิทยาลัยบูรพา ในวันที่ 25 มกราคม ปีค.ศ.2024 โดยมีการจัดกิจกรรมต่าง ๆ ที่เกี่ยวข้องกับการพัฒนาซอฟต์แวร์ เวลา 9:00 น. - 16:00 น.",
-        "มหาวิทยาลัยบูรพา สาขาวิชาAI ปีการศึกษา 2565 มีนักศึกษาจำนวน 100 คน มีอาจารย์ที่ปรึกษา 10 คน"
+        "มหาวิทยาลัยบูรพา สาขาวิชาAI ปีการศึกษา 2565 มีนักศึกษาจำนวน 100 คน มีอาจารย์ที่ปรึกษา 10 คน",
+        "Clicknext team AI มีสมาชิกทั้งหมด 8 คน ซึ่งประกอบด้วย พี่เจ๋ง มีหน้าที่เป็น Developer, พี่ปาล์ม มีหน้าที่เป็น Developer, พี่ออย มีหน้าที่เป็น Developer, พี่ดาว มีหน้าที่เป็น BA, พี่ชวน มีหน้าที่เป็น Data Operation, พี่เจน มีหน้าที่เป็น นักร้อง, พี่นุ่น มีหน้าที่เป็น นักร้อง, พี่โบว์ มีหน้าที่เป็น นักร้อง"
     ]
     
     # เพิ่มข้อมูลตัวอย่างลงใน Gemini
